@@ -1,29 +1,31 @@
-" If no screen, use color term
-"if ($TERM == "vt100")
-  " xterm-color / screen
-  "set t_Co=8
-  "set t_AF=[1;3%p1%dm
-  "set t_AB=[4%p1%dm
-"endif
 
-if filereadable($VIMRUNTIME . "/vimrc_example.vim")
- so $VIMRUNTIME/vimrc_example.vim
-endif
+"""""""""""""""""""""""""""""""""""""""""""
+""" (*) other needed files in ~/.vim/colors/... 
+""" (*) type [:help wildmenu] etc for help
+"""""""""""""""""""""""""""""""""""""""""""
 
-if filereadable($VIMRUNTIME . "/macros/matchit.vim")
- so $VIMRUNTIME/macros/matchit.vim
-endif
 
+""" no compatible with the old 'vi',
+""" should be the first in .vimrc, because it affects lots of settings
+"""
+""" if .vimrc is found, then default setting is nocompatible, 
+""" but this line still is useful sometimes
+set nocompatible
+
+
+""" coloring according to the extiension(.c .cpp. py...)
 syntax on
 
-set nocompatible
+
+""" command line completion(when cmd mode, pressing tab)
+""" a bar above cmd line jumps out
 set wildmenu
-set backupdir=~/tmp,.,/var/tmp/vi.recover,/tmp
-set directory=~/tmp,/var/tmp/vi.recover,/tmp,.
-"set backup		" keep a backup file
-set nobackup		" keep a backup file
-" set textwidth=78
-" set shiftwidth=4
+
+
+set nobackup
+
+set textwidth=78
+set shiftwidth=4
 set bs=2		" allow backspacing over everything in insert mode
 set ai			" always set autoindenting on
 set viminfo='20,\"50	" read/write a .viminfo file, don't store more
@@ -129,4 +131,32 @@ set expandtab       "編輯時將tab轉成空格
 ":retab =>所有tab變空格
 "ctrl+v+tab =>按真的tab
 set mouse=v
+
+
+""""""""""""""""" no use """"""""""""""""""""
+
+" If no screen, use color term
+"if ($TERM == "vt100")
+  " xterm-color / screen
+  "set t_Co=8
+  "set t_AF=[1;3%p1%dm
+  "set t_AB=[4%p1%dm
+"endif
+
+
+"if filereadable($VIMRUNTIME . "/vimrc_example.vim")
+" so $VIMRUNTIME/vimrc_example.vim
+"endif
+"
+"if filereadable($VIMRUNTIME . "/macros/matchit.vim")
+" so $VIMRUNTIME/macros/matchit.vim
+"endif
+
+
+""" where the backup file [XXX~] are saved
+""" you can create a dir [./.backup]
+"set backupdir=~/tmp,./.backup,.,/var/tmp/vi.recover,/tmp
+""" where the swap file [XXX.swp] are saved
+"set directory=~/tmp,/var/tmp/vi.recover,/tmp,.
+"set backup		" keep a backup file
 
