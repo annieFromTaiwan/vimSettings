@@ -11,6 +11,13 @@
 filetype plugin indent on
 
 
+""" make `d` to be truly `delete`, instead of `cut
+""" then when you `d` and `p`, the things you deleted won't be pasted
+""" use `x` when you really want `delete`
+"nnoremap d "_d
+"vnoremap d "_d
+
+
 """ no compatible with the old 'vi',
 """ should be the first in .vimrc, because it affects lots of settings
 """
@@ -82,6 +89,8 @@ endif
 
 " Tab key binding
 if version >= 700
+  map <F4> :set invcursorline<CR>
+
   map  [D :tabprev<CR>
   map  [C :tabnext<CR>
   map  <C-c> :tabnew<CR>
@@ -89,12 +98,19 @@ if version >= 700
   map  <C-t> :tabnew<CR>
   imap <C-t> <ESC>:tabnew<CR>
   map  <C-k> :tabclose<CR>
-  "map  <C-w> :tabclose<CR>  "<C-w> is for switching between windows
-  map  <C-p> :tabprev<CR>
-  imap <C-p> <ESC>:tabprev<CR>
-  map  <C-n> :tabnext<CR>
+
+  "<C-w> is for switching between windows
+  "map  <C-w> :tabclose<CR>
+  
+  "<C-p> <C-n> needed when using ubuntu terminal tab
+  "map  <C-p> :tabprev<CR>         
+  "imap <C-p> <ESC>:tabprev<CR>
+  "map  <C-n> :tabnext<CR>
   "imap <C-n> <ESC>:tabnext<CR>
-  map <F4> :set invcursorline<CR>
+  map  <C-Left> :tabprev<CR>         
+  imap <C-Left> <ESC>:tabprev<CR>
+  map  <C-Right> :tabnext<CR>
+  imap <C-Right> <ESC>:tabnext<CR>
 
   set tabpagemax=1000
 
@@ -114,6 +130,8 @@ if version >= 700
   
   map  <Home> ^
   imap <Home> <Esc>I
+  " Or the <End> often jumps to the newline character, disturbing
+  map  <End> $
   map  <F2> *
   imap <F2> <Esc>*i
   map  <F3> #
