@@ -1,14 +1,77 @@
 
 """""""""""""""""""""""""""""""""""""""""""
-""" (*) other needed files:
+""" (*) Theme files needed when using gvim:
 """         ~/.vim/colors/... 
 """         ~/.vim/ftplugin/python.vim  
-""" (*) type [:help wildmenu] etc for help
+""" (*) When seeking help you can type:
+"""         :help wildmenu
+"""         :h feature-list
+"""         :h =~
 """""""""""""""""""""""""""""""""""""""""""
+
+
+
+if has("gui_running")               " GUI is running or is about to start.
+    set lines=25 columns=120
+    set guifont=Consolas:h14
+    "set guifont=Cantarell:h14
+    color pyte                      " ~/.vim/colors/pyte.vim
+else                                " This is console Vim.
+    if has("unix")
+        let s:uname = system("uname -s")
+        if s:uname =~ "Darwin"      " when using mac
+            color zellner
+        endif
+    else
+        "set font=Arial
+        color morning
+        "set background=dark        " the other one is 'light'
+    endif
+endif
+
+
+
+""" syntax coloring according to the extension(.c/.cpp/.py/...)
+syntax on
+""" show line numbers in the side
+set number
+"set nonu
+""" highlight things that you search
+set hlsearch
+"set nohlsearch
+""" when typing vim commands, press tab then a bar of options will jump above
+set wildmenu
+
 
 
 """ to activate file type plugin (for indention, etc)
 filetype plugin indent on
+
+
+
+""" when opening file, make the cursor stays at previous editing position
+autocmd BufReadPost * 
+              \ if line("'\"")>0&&line("'\"")<=line("$") | 
+              \ exe "normal g'\"" | 
+              \ endif
+
+
+
+""" indentation related tabs and spaces
+""" :retab     => 所有tab變空格
+""" ctrl+v+tab => 按真的tab
+set ai et ci pi sw=4 tabstop=4 sts=4
+":set autoindent     " if not set, the cursor'll start at the beginning when inserting a new line
+":set expandtab      " hitting a tab in insert mode will produce the appropriate number of spaces
+":set copyindent     " auto `set paste` when pasting??
+":set preserveindent
+":set shiftwidth=4   " indent with 4 spaces when using `<<` and `>>` commands
+":set tabstop=4      " set a tab to be four columns wide
+":set softtabstop=0  " dont care; relevant only when `set noexpandtab`
+
+
+
+
 
 
 """ make `d` to be truly `delete`, instead of `cut
@@ -16,6 +79,7 @@ filetype plugin indent on
 """ use `x` when you really want `delete`
 "nnoremap d "_d
 "vnoremap d "_d
+
 
 
 """ no compatible with the old 'vi',
@@ -26,23 +90,15 @@ filetype plugin indent on
 set nocompatible
 
 
-""" coloring according to the extiension(.c .cpp. py...)
-syntax on
-
-
-""" command line completion(when cmd mode, pressing tab)
-""" a bar above cmd line jumps out
-set wildmenu
-
 
 """ where the swap file [XXXX.swp] are saved
 set directory=~/tmp,/var/tmp/vi.recover,/tmp,.
-
 """ keep a backup file
 set backup              " set nobackup
 """ where the backup file [XXXX~] are saved
 """ you can create a dir [./.backup]
 set backupdir=~/tmp,/var/tmp/vi.recover,/tmp,./.backup,.
+
 
 
 """ when a line of text is too long, displaying in multiple lines
@@ -51,132 +107,111 @@ set wrap                " set nowrap
 set whichwrap=b,s,<,>,[,]
 
 
-""" when opening file, make the cursor stays at previous editing location
-autocmd BufReadPost * 
-              \ if line("'\"")>0&&line("'\"")<=line("$") | 
-              \ exe "normal g'\"" | 
-              \ endif
+
+set mouse=v
+
+
+set bs=2        " allow backspacing over everything in insert mode
+
 
 
 "set textwidth=78
-set shiftwidth=4
-set bs=2		" allow backspacing over everything in insert mode
-set ai			" always set autoindenting on
-set viminfo='20,\"50	" read/write a .viminfo file, don't store more
-set showmatch
-set hlsearch
+"set viminfo='20,\"50   " read/write a .viminfo file, don't store more
 
-"set background=dark	" another is 'light'
 
-" VIM 6.0,
-if version >= 600
-    "set nohlsearch
-    " set foldcolumn=2
-    " set foldmethod=syntax
+
+set encoding=utf-8
+"set encoding=big5
+
+
+
+if version >= 600              " vim 6.0
+    "set foldcolumn=2
     set foldmethod=marker
+    "set foldmethod=syntax
     set foldlevel=1
-"    set foldtext=/^/=>
-    set encoding=utf-8
-    " set fileencoding=big5
-    " set termencoding=big5
-    " set encoding=big5
-     set fileencodings=latin,big5,ucs-bom,utf-8,sjis,big5
-    " set fileencodings=ucs-bom,utf-8,sjis,big5,latin1
+    "set foldtext=/^/=>
+    
+    "set termencoding=big5
+    
+    "set fileencoding=big5
+    set fileencodings=latin,big5,ucs-bom,utf-8,sjis,big5
+    "set fileencodings=ucs-bom,utf-8,sjis,big5,latin1
 else
-    set encoding=utf-8
     set fileencoding=taiwan
 endif
 
-" Tab key binding
+
+
 if version >= 700
-  map <F4> :set invcursorline<CR>
-
-  map  [D :tabprev<CR>
-  map  [C :tabnext<CR>
-  map  <C-c> :tabnew<CR>
-  imap <C-c> <ESC>:tabnew<CR>
-  map  <C-t> :tabnew<CR>
-  imap <C-t> <ESC>:tabnew<CR>
-  map  <C-k> :tabclose<CR>
-
-  "<C-w> is for switching between windows
-  "map  <C-w> :tabclose<CR>
+    map <F4> :set invcursorline<CR>
   
-  "<C-p> <C-n> needed when using ubuntu terminal tab
-  "map  <C-p> :tabprev<CR>         
-  "imap <C-p> <ESC>:tabprev<CR>
-  "map  <C-n> :tabnext<CR>
-  "imap <C-n> <ESC>:tabnext<CR>
-  map  <C-Left> :tabprev<CR>         
-  imap <C-Left> <ESC>:tabprev<CR>
-  map  <C-Right> :tabnext<CR>
-  imap <C-Right> <ESC>:tabnext<CR>
-
-  set tabpagemax=1000
-
-  map g1 :tabn 1<CR>
-  map g2 :tabn 2<CR>
-  map g3 :tabn 3<CR>
-  map g4 :tabn 4<CR>
-  map g5 :tabn 5<CR>
-  map g6 :tabn 6<CR>
-  map g7 :tabn 7<CR>
-  map g8 :tabn 8<CR>
-  map g9 :tabn 9<CR>
-  map g0 :tabn 10<CR>
-  map gc :tabnew<CR>
-  map gn :tabn<CR>
-  map gp :tabp<CR>
+    map  [D :tabprev<CR>
+    map  [C :tabnext<CR>
+    map  <C-c> :tabnew<CR>
+    imap <C-c> <ESC>:tabnew<CR>
+    map  <C-t> :tabnew<CR>
+    imap <C-t> <ESC>:tabnew<CR>
+    map  <C-k> :tabclose<CR>
   
-  map  <Home> ^
-  imap <Home> <Esc>I
-  " Or the <End> often jumps to the newline character, disturbing
-  map  <End> $
-  map  <F2> *
-  imap <F2> <Esc>*i
-  map  <F3> #
-  imap <F3> <Esc>#i
-  map  ff 0d$
-
-  "map  , <Down>
-  "map  j <Left>
-
-  highlight TabLineSel term=bold,underline cterm=bold,underline ctermfg=7 ctermbg=0
-  highlight TabLine    term=bold cterm=bold ctermfg=white ctermbg=black
-  highlight clear TabLineFill
-
-
+    "<C-w> is for switching between windows
+    "map  <C-w> :tabclose<CR>
+    
+    "<C-p> <C-n> needed when using ubuntu terminal tab
+    "map  <C-p> :tabprev<CR>         
+    "imap <C-p> <ESC>:tabprev<CR>
+    "map  <C-n> :tabnext<CR>
+    "imap <C-n> <ESC>:tabnext<CR>
+    map  <C-Left> :tabprev<CR>         
+    imap <C-Left> <ESC>:tabprev<CR>
+    map  <C-Right> :tabnext<CR>
+    imap <C-Right> <ESC>:tabnext<CR>
+  
+    set tabpagemax=1000
+  
+    map g1 :tabn 1<CR>
+    map g2 :tabn 2<CR>
+    map g3 :tabn 3<CR>
+    map g4 :tabn 4<CR>
+    map g5 :tabn 5<CR>
+    map g6 :tabn 6<CR>
+    map g7 :tabn 7<CR>
+    map g8 :tabn 8<CR>
+    map g9 :tabn 9<CR>
+    map g0 :tabn 10<CR>
+    map gc :tabnew<CR>
+    map gn :tabn<CR>
+    map gp :tabp<CR>
+    
+    map  <Home> ^
+    imap <Home> <Esc>I
+    " Or the <End> often jumps to the newline character, disturbing
+    map  <End> $
+    map  <F2> *
+    imap <F2> <Esc>*i
+    map  <F3> #
+    imap <F3> <Esc>#i
+    map  ff 0d$
+  
+    "map  , <Down>
+    "map  j <Left>
+  
+    highlight TabLineSel term=bold,underline cterm=bold,underline ctermfg=7 ctermbg=0
+    highlight TabLine    term=bold cterm=bold ctermfg=white ctermbg=black
+    highlight clear TabLineFill
 end
 
-" Crontabs must be edited in place
+""" Crontabs must be edited in place
 "au BufRead /tmp/crontab* :set backupcopy=no 
 
 
 
-set sw=4
-set sts=4
-set number
-"set guifont=Cantarell:h14
 
-if has("gui_running")
-    " GUI is running or is about to start.
-    " Maximize gvim window.
-    set lines=25 columns=120
-    set guifont=Consolas:h14 "pitch 14
-    color pyte "~/.vim/colors/pyte.vim
-else
-    " This is console Vim.
-    "color evening
-    " set font=Arial
-    color morning
-endif
-
-set tabstop=4       "按一次tab跑出4個空格
-set shiftwidth=4    "自動縮排時一次4個空格
-set expandtab       "編輯時將tab轉成空格
-":retab =>所有tab變空格
-"ctrl+v+tab =>按真的tab
-set mouse=v
+""" when inserting brackets, the cursor will shortly move to the previous matching bracket
+""" (Press any key then the cursor will go back. It's just an animation)
+"set showmatch
+""" set the duration of the animation to tenths of a second
+":set matchtime=10
 
 
 """"""""""""""""" no use """"""""""""""""""""
