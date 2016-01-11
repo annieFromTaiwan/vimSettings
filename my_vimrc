@@ -1,8 +1,8 @@
 
 """""""""""""""""""""""""""""""""""""""""""
 """ (*) Theme files needed when using gvim:
-"""         ~/.vim/colors/... 
-"""         ~/.vim/ftplugin/python.vim  
+"""         ~/.vim/colors/...
+"""         ~/.vim/ftplugin/python.vim
 """ (*) When seeking help you can type:
 """         :help wildmenu
 """         :h feature-list
@@ -52,9 +52,9 @@ filetype plugin indent on
 
 
 """ when opening file, make the cursor stays at previous editing position
-autocmd BufReadPost * 
-              \ if line("'\"")>0&&line("'\"")<=line("$") | 
-              \ exe "normal g'\"" | 
+autocmd BufReadPost *
+              \ if line("'\"")>0&&line("'\"")<=line("$") |
+              \ exe "normal g'\"" |
               \ endif
 
 
@@ -87,7 +87,7 @@ set ai et ci pi sw=4 tabstop=4 sts=4
 """ no compatible with the old 'vi',
 """ should be the first in .vimrc, because it affects lots of settings
 """
-""" if .vimrc is found, then default setting is nocompatible, 
+""" if .vimrc is found, then default setting is nocompatible,
 """ but this line still is useful sometimes
 set nocompatible
 
@@ -133,9 +133,9 @@ if version >= 600              " vim 6.0
     "set foldmethod=syntax
     set foldlevel=1
     "set foldtext=/^/=>
-    
+
     "set termencoding=big5
-    
+
     "set fileencoding=big5
     set fileencodings=latin,big5,ucs-bom,utf-8,sjis,big5
     "set fileencodings=ucs-bom,utf-8,sjis,big5,latin1
@@ -147,7 +147,7 @@ endif
 
 if version >= 700
     map <F4> :set invcursorline<CR>
-  
+
     map  [D :tabprev<CR>
     map  [C :tabnext<CR>
     map  <C-c> :tabnew<CR>
@@ -155,22 +155,22 @@ if version >= 700
     map  <C-t> :tabnew<CR>
     imap <C-t> <ESC>:tabnew<CR>
     map  <C-k> :tabclose<CR>
-  
+
     "<C-w> is for switching between windows
     "map  <C-w> :tabclose<CR>
-    
+
     "<C-p> <C-n> needed when using ubuntu terminal tab
-    "map  <C-p> :tabprev<CR>         
+    "map  <C-p> :tabprev<CR>
     "imap <C-p> <ESC>:tabprev<CR>
     "map  <C-n> :tabnext<CR>
     "imap <C-n> <ESC>:tabnext<CR>
-    map  <C-Left> :tabprev<CR>         
+    map  <C-Left> :tabprev<CR>
     imap <C-Left> <ESC>:tabprev<CR>
     map  <C-Right> :tabnext<CR>
     imap <C-Right> <ESC>:tabnext<CR>
-  
+
     set tabpagemax=1000
-  
+
     map g1 :tabn 1<CR>
     map g2 :tabn 2<CR>
     map g3 :tabn 3<CR>
@@ -184,7 +184,7 @@ if version >= 700
     map gc :tabnew<CR>
     map gn :tabn<CR>
     map gp :tabp<CR>
-    
+
     map  <Home> ^
     imap <Home> <Esc>I
     " Or the <End> often jumps to the newline character, disturbing
@@ -194,17 +194,17 @@ if version >= 700
     map  <F3> #
     imap <F3> <Esc>#i
     map  ff 0d$
-  
+
     "map  , <Down>
     "map  j <Left>
-  
+
     highlight TabLineSel term=bold,underline cterm=bold,underline ctermfg=7 ctermbg=0
     highlight TabLine    term=bold cterm=bold ctermfg=white ctermbg=black
     highlight clear TabLineFill
 end
 
 """ Crontabs must be edited in place
-"au BufRead /tmp/crontab* :set backupcopy=no 
+"au BufRead /tmp/crontab* :set backupcopy=no
 
 
 
