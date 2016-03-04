@@ -21,11 +21,11 @@ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 (2) .vimrc
 =====
 
+~$ cd ~/Documents
+
 ~$ git clone https://github.com/annieFromTaiwan/vimSettings.git
 
-~$ mv vimSettings/ ~/.vim
-
-~$ ln -s ~/.vim/vimSettings/my_vimrc .vimrc
+~$ ln -s ~/Documents/vimSettings/my_vimrc .vimrc
 
 
 
@@ -41,3 +41,11 @@ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 ~$ git clone git://github.com/tpope/vim-surround.git
 
 ### open vim, type `:Helptags` and then you can use `:help surround`
+
+
+.bash_profile
+=====
+
+(1) curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+
+(2) ln -s ~/Documents/vimSettings/my_bash_profile ~/.bash_profile
