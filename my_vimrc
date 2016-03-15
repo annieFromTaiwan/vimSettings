@@ -118,6 +118,15 @@ set whichwrap=b,s,<,>,[,]
 
 
 
+""" `encoding` is for showing text
+set encoding=utf-8      " set encoding=big5
+""" `fileencoding` is for saving file
+set fileencoding=utf-8
+set fileencodings=latin,big5,ucs-bom,utf-8,sjis,latin1
+"set termencoding=big5
+
+
+
 set mouse=v
 
 
@@ -130,25 +139,12 @@ set bs=2        " allow backspacing over everything in insert mode
 
 
 
-set encoding=utf-8
-"set encoding=big5
-
-
-
 if version >= 600              " vim 6.0
     "set foldcolumn=2
     set foldmethod=marker
     "set foldmethod=syntax
     set foldlevel=1
     "set foldtext=/^/=>
-
-    "set termencoding=big5
-
-    "set fileencoding=big5
-    set fileencodings=latin,big5,ucs-bom,utf-8,sjis,big5
-    "set fileencodings=ucs-bom,utf-8,sjis,big5,latin1
-else
-    set fileencoding=taiwan
 endif
 
 
