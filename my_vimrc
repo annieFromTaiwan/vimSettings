@@ -47,12 +47,16 @@ set hlsearch
 "set nohlsearch
 """ when typing vim commands, press tab then a bar of options will jump above
 set wildmenu
-
+""" one more line of message in the screen bottom, to show current filepath
+set laststatus=2
 
 
 """ to activate file type plugin (for indention, etc)
 filetype plugin indent on
 
+
+""" when git commit, not wrapping lines
+au FileType gitcommit set textwidth=1000
 
 
 """ when opening file, make the cursor stays at previous editing position
@@ -88,8 +92,8 @@ set ai et ci pi sw=4 tabstop=4 sts=4
 
 
 
-""" no compatible with the old 'vi',
-""" should be the first in .vimrc, because it affects lots of settings
+""" not compatible with the old 'vi',
+""" should be the first line in .vimrc, because it affects lots of settings
 """
 """ if .vimrc is found, then default setting is nocompatible,
 """ but this line still is useful sometimes
