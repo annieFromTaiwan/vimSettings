@@ -49,3 +49,9 @@ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 (1) curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
 
 (2) ln -s ~/Documents/vimSettings/my_bash_profile ~/.bash_profile
+
+
+.gitconfig
+=====
+
+ln -s ~/Documents/vimSettings/my_gitconfig ~/.gitconfig
