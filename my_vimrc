@@ -131,7 +131,8 @@ set fileencodings=latin,big5,ucs-bom,utf-8,sjis,latin1
 
 
 
-set mouse=v
+""" mouse related functions. `a` means `all`.
+set mouse=a
 
 
 set bs=2        " allow backspacing over everything in insert mode
