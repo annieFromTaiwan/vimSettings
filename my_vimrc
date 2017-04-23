@@ -17,17 +17,21 @@ cmap dp %s/ \+$//g
 
 
 
-if has("gui_running")               " GUI is running or is about to start.
-    set lines=25 columns=120
-    set guifont=Consolas:h14
-    "set guifont=Cantarell:h14
-    color pyte                      " ~/.vim/colors/pyte.vim
-else                                " This is console Vim.
-    if has("unix")
-        let s:uname = system("uname -s")
-        if s:uname =~ "Darwin"      " when using mac
-            color zellner
-        endif
+let s:uname = system("uname -s")
+if s:uname =~ "Darwin"              " Operation System - MAC
+    if has("gui_running")           " mvim
+        set guifont=Andale\ Mono:h14
+        color desert                " darkblue, desert, evening, slate, zellner
+    else                            " built-in vim
+        color zellner
+    endif
+elseif s:uname =~ "Linux"           " Operation System - Ubuntu or etc
+    color morning
+else                                " Operation System - Windows8 (value would be 'MSYS_NT-6.1') or etc
+    if has("gui_running")           " gvim
+        set lines=25 columns=120
+        set guifont=Consolas:h14    " ?? try 'Cantarell' ??
+        color pyte                  " ~/.vim/colors/pyte.vim
     else
         "set font=Arial
         color morning
