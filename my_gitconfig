@@ -12,6 +12,6 @@
     br = branch
     #hist = !git --no-pager log -10 --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --decorate
     #hist = log -10 --pretty=format:\"%h %ad | %an | %s%d\" --date=short --decorate
-    hist = log -10 --pretty=format:\"%Cgreen%h%Creset %ad | %C(yellow)%s%dlog%Creset | %an\" --date=short --decorate
+    hist = log -10 --pretty=format:\"%Cgreen%h%Creset %ad | %C(yellow)%s%d%Creset | %an\" --date=short --decorate
     type = cat-file -t
     dump = cat-file -p
