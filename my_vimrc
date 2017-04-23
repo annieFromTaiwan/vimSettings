@@ -7,9 +7,14 @@
 """         :help wildmenu
 """         :h feature-list
 """         :h =~
+""" (*) To see version and vimrc filepaths:
+"""         :version
+""" (*) To see current vimrc filepath:
+"""         :echo $MYVIMRC
 """""""""""""""""""""""""""""""""""""""""""
 
-execute pathogen#infect()
+" Make vim packages easily installed and worked
+"execute pathogen#infect()
 
 
 " map this substitution in command line mode
@@ -19,6 +24,7 @@ cmap dp %s/ \+$//g
 
 let s:uname = system("uname -s")
 if s:uname =~ "Darwin"              " Operation System - MAC
+    set encoding=utf-8              " If not set right, system msg and Chinese file content would be unreadable(garbled).
     if has("gui_running")           " mvim
         set guifont=Andale\ Mono:h14
         color desert                " darkblue, desert, evening, slate, zellner
@@ -28,13 +34,14 @@ if s:uname =~ "Darwin"              " Operation System - MAC
 elseif s:uname =~ "Linux"           " Operation System - Ubuntu or etc
     color morning
 else                                " Operation System - Windows8 (value would be 'MSYS_NT-6.1') or etc
+    set encoding=big5               " If not set right, system msg and Chinese file content would be unreadable(garbled).
     if has("gui_running")           " gvim
         set lines=25 columns=120
-        set guifont=Consolas:h14    " ?? try 'Cantarell' ??
-        color pyte                  " ~/.vim/colors/pyte.vim
+        set guifont=Consolas:h12
+        color desert                " [pyte] ~/.vim/colors/pyte.vim
     else
+        color darkblue
         "set font=Arial
-        color morning
         "set background=dark        " the other one is 'light'
     endif
 endif
@@ -122,8 +129,6 @@ set whichwrap=b,s,<,>,[,]
 
 
 
-""" `encoding` is for showing text
-set encoding=utf-8      " set encoding=big5
 """ `fileencoding` is for saving file
 set fileencoding=utf-8
 set fileencodings=latin,big5,ucs-bom,utf-8,sjis,latin1
