@@ -55,3 +55,9 @@ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 =====
 
 ln -s ~/Documents/vimSettings/my_gitconfig ~/.gitconfig
+
+
+Other
+=====
+python2-pip: https://pip.pypa.io/en/stable/installing/
+brew(2018): http://osxdaily.com/2018/03/07/how-install-homebrew-mac-os/
