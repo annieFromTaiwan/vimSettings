@@ -59,5 +59,19 @@ ln -s ~/Documents/vimSettings/my_gitconfig ~/.gitconfig
 
 Other
 =====
-python2-pip: https://pip.pypa.io/en/stable/installing/
-brew(2018): http://osxdaily.com/2018/03/07/how-install-homebrew-mac-os/
+
+### brew (2018 resource):
+
+http://osxdaily.com/2018/03/07/how-install-homebrew-mac-os/
+
+### python2-pip: 
+
+https://pip.pypa.io/en/stable/installing/
+
+```
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python get-pip.py --user
+python -m pip --version
+```
+
+
